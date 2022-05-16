@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Customer Information Center</title>
+    <title>Biorythms calculator</title>
     <link href="style/index.css" rel="stylesheet" type="text/css" />
     <script src="plotly/js/plotly-latest.min.js" type="text/javascript">
     </script>
@@ -61,7 +61,8 @@
         var physical_Y = [];
         var emotional_Y = [];
         var intellectual_Y = [];
-        var timestamp_now = Date.now();
+        var timestamp_now = new Date();
+        timestamp_now.setHours(0,0,0,0)
 
         <c:forEach items="${biorythmsList}" var="biorythm" varStatus="i">
         days_X[${i.index}] = "${biorythm.day_date}";
