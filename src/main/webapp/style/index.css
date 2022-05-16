@@ -1,5 +1,10 @@
+img{
+    display: block;
+    margin: 0 auto;
+}
+
 body {
-    background-color: green;
+    background-color: powderblue;
     text-align: center;
     min-height: 100vh;
     display: flex;

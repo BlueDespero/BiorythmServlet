@@ -3,7 +3,7 @@
 
 <head>
     <title>Customer Information Center</title>
-    <link href="style/default.css" rel="stylesheet" type="text/css" />
+    <link href="style/index.css" rel="stylesheet" type="text/css" />
     <script src="plotly/js/plotly-latest.min.js" type="text/javascript">
     </script>
 
@@ -114,7 +114,7 @@
 </c:if>
 
 <footer>
-    Author: <%=config.getServletContext().getInitParameter("author") %>
+    Author: <%=config.getServletContext().getInitParameter("author") %>  ||
     <a href="mailto:<%=config.getServletContext().getInitParameter("author_mail") %>"><%=config.getServletContext().getInitParameter("author_mail") %></a>
 </footer>
 
