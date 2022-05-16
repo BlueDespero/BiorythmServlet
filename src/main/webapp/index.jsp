@@ -61,6 +61,7 @@
         var physical_Y = [];
         var emotional_Y = [];
         var intellectual_Y = [];
+        var timestamp_now = Date.now();
 
         <c:forEach items="${biorythmsList}" var="biorythm" varStatus="i">
         days_X[${i.index}] = "${biorythm.day_date}";
@@ -91,7 +92,21 @@
                 showgrid: true,
                 showline: true,
                 zeroline: true,
-            }
+            },
+            shapes: [
+                {
+                    type: 'line',
+                    x0: timestamp_now,
+                    y0: -1,
+                    x1: timestamp_now,
+                    y1: 1,
+                    line: {
+                        color: 'rgb(55, 128, 191)',
+                        width: 3,
+                        dash: 'dot'
+                    }
+                }
+            ]
         };
 
         plotChart("BiorythmsChart", data, layout);
