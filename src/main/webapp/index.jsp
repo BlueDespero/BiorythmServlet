@@ -113,5 +113,10 @@
     </script>
 </c:if>
 
+<footer>
+    Author: <%=config.getServletContext().getInitParameter("author") %>
+    <a href="mailto:<%=config.getServletContext().getInitParameter("author_mail") %>"><%=config.getServletContext().getInitParameter("author_mail") %></a>
+</footer>
+
 </body>
 </html>
