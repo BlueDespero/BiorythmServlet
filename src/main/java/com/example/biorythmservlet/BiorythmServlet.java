@@ -19,18 +19,22 @@ public class BiorythmServlet extends HttpServlet {
                          HttpServletResponse response)
             throws IOException, jakarta.servlet.ServletException {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-        try {
-            this.provided_date = formatter.parse(request.getParameter("birthday"));
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (request.getParameter("birthday") != null && !Objects.equals(request.getParameter("birthday"), ""))
+        {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+            try {
+                this.provided_date = formatter.parse(request.getParameter("birthday"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            System.out.println("Parameter [size] value = "
+                    + request.getParameter("birthday"));
+
+            request.setAttribute("biorythmsList",
+                    this.getBiorythmsList());
         }
 
-        System.out.println("Parameter [size] value = "
-                + request.getParameter("birthday"));
-
-        request.setAttribute("biorythmsList",
-                this.getBiorythmsList());
 
         request.getRequestDispatcher("/index")
                 .forward(request, response);
