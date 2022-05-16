@@ -9,12 +9,14 @@ import static java.lang.Math.sin;
 public class Biorythm {
 
     private final Date day_date;
+    private final Date birthday;
     private double physical;
     private double emotional;
     private double intellectual;
 
-    public Biorythm(Date day_date) {
+    public Biorythm(Date day_date, Date birthday) {
         this.day_date = day_date;
+        this.birthday = birthday;
         this.calculate_day();
     }
 
@@ -23,8 +25,8 @@ public class Biorythm {
     }
 
     private void calculate_day() {
-        LocalDate dateBefore = convertToLocalDateViaSqlDate(this.day_date);
-        LocalDate dateAfter = LocalDate.now();
+        LocalDate dateBefore = convertToLocalDateViaSqlDate(this.birthday);
+        LocalDate dateAfter = convertToLocalDateViaSqlDate(this.day_date);
         long noOfDaysBetween = ChronoUnit.DAYS.between(dateBefore, dateAfter);
 
         this.physical = sin(Math.PI * 2 * noOfDaysBetween / 23);

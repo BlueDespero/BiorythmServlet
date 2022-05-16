@@ -54,14 +54,15 @@ public class BiorythmServlet extends HttpServlet {
 
     private List<Biorythm> getBiorythmsList() {
         List<Biorythm> Biorythms = new ArrayList<>();
+        Date today = new Date();
 
         long DAY_IN_MS = 1000 * 60 * 60 * 24;
-        Calendar calendar = getCalendarWithoutTime(new Date(this.provided_date.getTime() - (5 * DAY_IN_MS)));
-        Calendar endCalendar = getCalendarWithoutTime(new Date(this.provided_date.getTime() + (27 * DAY_IN_MS)));
+        Calendar calendar = getCalendarWithoutTime(new Date(today.getTime() - (5 * DAY_IN_MS)));
+        Calendar endCalendar = getCalendarWithoutTime(new Date(today.getTime() + (27 * DAY_IN_MS)));
 
         while (calendar.before(endCalendar)) {
             Date result = calendar.getTime();
-            Biorythms.add(new Biorythm(result));
+            Biorythms.add(new Biorythm(result, this.provided_date));
             calendar.add(Calendar.DATE, 1);
         }
 
