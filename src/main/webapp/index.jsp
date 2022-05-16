@@ -5,6 +5,11 @@
 </h2>
 
 
-<a href="servlet">Click here to see servlet</a>
+
+<form id="formoid" action="servlet" title="" method="get">
+        <label for="birthday">Birthday: </label><input type="date" id="birthday" name="birthday" value=<%=getServletConfig().getInitParameter("default_date") %>>
+        <input type="submit">
+</form>
+
 </body>
 </html>
