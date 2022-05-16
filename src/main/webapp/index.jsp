@@ -15,8 +15,11 @@
 </head>
 
 <body>
+
+<img src="resources/mayancalendar.png" alt="Mayan calendar" width="500" height="500">
+
 <h2>
-    Hello World!
+    Biorythms calculator
 </h2>
 
 
@@ -28,7 +31,7 @@
 
 <c:if test="${not empty biorythmsList}">
 
-    <h2>Age and Sales Count Chart</h2>
+    <h2>Biorythms for given date</h2>
 
     <div id="BiorythmsChart" ></div>
 
@@ -77,7 +80,7 @@
         var data = [physicalValues, emotionallValues, intellectualValues];
         var layout = {
             xaxis: {
-                title: 'dates',
+                type: 'date',
                 showgrid: true,
                 zeroline: true,
             },

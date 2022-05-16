@@ -34,8 +34,8 @@ public class Biorythm {
     }
 
 
-    public Date getDay_date() {
-        return day_date;
+    public long getDay_date() {
+        return day_date.getTime();
     }
 
     public double getPhysical() {
