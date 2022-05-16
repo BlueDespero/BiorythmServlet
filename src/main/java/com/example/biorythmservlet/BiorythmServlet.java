@@ -13,27 +13,33 @@ import java.util.*;
 public class BiorythmServlet extends HttpServlet {
 
     private Date provided_date;
+    private Date today;
 
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws IOException, jakarta.servlet.ServletException {
 
-        if (request.getParameter("birthday") != null && !Objects.equals(request.getParameter("birthday"), ""))
-        {
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
-            try {
-                this.provided_date = formatter.parse(request.getParameter("birthday"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+        boolean skip_request = false;
+        today = new Date();
 
-            System.out.println("Parameter [size] value = "
-                    + request.getParameter("birthday"));
+        if (request.getParameter("birthday") == null || Objects.equals(request.getParameter("birthday"), ""))
+            skip_request = true;
 
+
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        try {
+            this.provided_date = formatter.parse(request.getParameter("birthday"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        if (provided_date.getTime() > today.getTime())
+            skip_request = true;
+
+        if (!skip_request)
             request.setAttribute("biorythmsList",
                     this.getBiorythmsList());
-        }
 
 
         request.getRequestDispatcher("/index")
@@ -54,7 +60,6 @@ public class BiorythmServlet extends HttpServlet {
 
     private List<Biorythm> getBiorythmsList() {
         List<Biorythm> Biorythms = new ArrayList<>();
-        Date today = new Date();
 
         long DAY_IN_MS = 1000 * 60 * 60 * 24;
         Calendar calendar = getCalendarWithoutTime(new Date(today.getTime() - (5 * DAY_IN_MS)));
