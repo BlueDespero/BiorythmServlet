@@ -3,6 +3,7 @@
 
 <head>
     <title>Customer Information Center</title>
+    <link href="style/default.css" rel="stylesheet" type="text/css" />
     <script src="plotly/js/plotly-latest.min.js" type="text/javascript">
     </script>
 
@@ -79,6 +80,8 @@
 
         var data = [physicalValues, emotionallValues, intellectualValues];
         var layout = {
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
             xaxis: {
                 type: 'date',
                 showgrid: true,
